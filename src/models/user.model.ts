@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+const jwt = require('jsonwebtoken');
 
 export type UserDocument = mongoose.Document & {
     email: string;
@@ -14,6 +15,8 @@ export type UserDocument = mongoose.Document & {
     tokens: AuthToken[];
 
     comparePassword: comparePasswordFunction;
+
+    generateAuthToken: generateAuthTokenFunction;
 };
 
 const userSchema = new mongoose.Schema({
@@ -38,6 +41,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    tokens: {
+        type: Array,
+        default: []
+    },
     passwordResetToken: String,
     passwordResetExpires: Date,
 
@@ -45,10 +52,10 @@ const userSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 type comparePasswordFunction = (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
+type generateAuthTokenFunction = (id: String, email: String) => string;
 
 export interface AuthToken {
     accessToken: string;
-    kind: string;
 }
 
 /**
@@ -75,6 +82,11 @@ const comparePassword: comparePasswordFunction = function (this: any, candidateP
     });
 };
 
+const generateAuthToken: generateAuthTokenFunction = function (id: String, email: String) {
+    return jwt.sign( { _id: id, email: email }, process.env.APP_KEY, { expiresIn: '24h'} );
+}
+
 userSchema.methods.comparePassword = comparePassword;
+userSchema.methods.generateAuthToken = generateAuthToken;
 
 export const User = mongoose.model<UserDocument>("User", userSchema);
