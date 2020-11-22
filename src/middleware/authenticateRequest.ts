@@ -7,11 +7,11 @@ export const authenticateRequest = async (req: Request, res: Response, next: Nex
         // @ts-ignore
         const token = req.header('Authorization').replace('Bearer ', '');
         const decoded = jwt.verify(token, process.env.APP_KEY);
-        console.log(decoded);
         const user = await User.findOne({ _id: decoded._id, 'tokens.accessToken': token });
         if (!user){
             throw new Error();
         }
+        req.user = user;
         next();
     } catch (e) {
         res.status(401).send({"Error": "User not authenticated. Please log in."});

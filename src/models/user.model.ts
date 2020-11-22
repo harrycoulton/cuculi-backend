@@ -14,8 +14,6 @@ export type UserDocument = mongoose.Document & {
 
     tokens: AuthToken[];
 
-    comparePassword: comparePasswordFunction;
-
     generateAuthToken: generateAuthTokenFunction;
 };
 
@@ -51,7 +49,6 @@ const userSchema = new mongoose.Schema({
 
 }, {timestamps: true});
 
-type comparePasswordFunction = (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
 type generateAuthTokenFunction = (id: String, email: String) => string;
 
 export interface AuthToken {
@@ -76,17 +73,10 @@ userSchema.pre("save", function save(next){
     });
 });
 
-const comparePassword: comparePasswordFunction = function (this: any, candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
-        cb(err, isMatch);
-    });
-};
-
 const generateAuthToken: generateAuthTokenFunction = function (id: String, email: String) {
     return jwt.sign( { _id: id, email: email }, process.env.APP_KEY, { expiresIn: '24h'} );
 }
 
-userSchema.methods.comparePassword = comparePassword;
 userSchema.methods.generateAuthToken = generateAuthToken;
 
 export const User = mongoose.model<UserDocument>("User", userSchema);

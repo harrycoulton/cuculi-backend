@@ -1,8 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
 import {User, UserDocument} from '../models/user.model';
-import "../config/passport";
-
-const bcrypt = require('bcryptjs');
 
 export const getUserById = async (req: Request, res: Response) => {
     User.findById(req.params.id, (err, user: UserDocument) => {
@@ -10,18 +7,6 @@ export const getUserById = async (req: Request, res: Response) => {
         res.send(user);
     })
 };
-
-export const getUserByCredentials = async (email: RegExp, password: String) => {
-    const user = await User.findOne({email: email});
-    if (!user) {
-        return null;
-    }
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
-        return null;
-    }
-    return user;
-}
 
 export const getAllUsers = async (req: Request, res: Response) => {
     try {
