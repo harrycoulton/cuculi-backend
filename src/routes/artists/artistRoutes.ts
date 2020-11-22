@@ -7,6 +7,17 @@ import * as artistController from '../../controllers/artistController';
 // Auth
 import * as auth from '../../middleware/authenticateRequest';
 
-router.post('/create', artistController.create);
+// Public
+
+router.get('/all', artistController.getAllUndeletedArtists);
+router.get('/get/:id', artistController.getArtistById);
+
+// Protected
+
+router.get('/all-admin', auth.authenticateRequest, artistController.getAllArtists);
+router.post('/create', auth.authenticateRequest, artistController.create);
+router.put('/update/:id', auth.authenticateRequest, artistController.update);
+router.delete('/delete/:id', auth.authenticateRequest, artistController.markDeleted);
+router.put('/undelete/:id', auth.authenticateRequest, artistController.markUnDeleted);
 
 module.exports = router;

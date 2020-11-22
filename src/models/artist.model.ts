@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-const jwt = require('jsonwebtoken');
 
 export type ArtistDocument = mongoose.Document & {
     name: string;
