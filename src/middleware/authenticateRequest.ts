@@ -11,6 +11,7 @@ export const authenticateRequest = async (req: Request, res: Response, next: Nex
         if (!user){
             throw new Error();
         }
+        // @ts-ignore
         req.user = user;
         next();
     } catch (e) {
