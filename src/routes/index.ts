@@ -2,12 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 // Routes
-const artistRouter = require('./artists/artistRoutes');
-const authRouter = require('./auth/authRoutes');
-const userRouter = require('./users/userRoutes');
+const artistRouter = require('./artist.routes');
+const authRouter = require('./auth.routes');
+const releaseRouter = require('./release.routes');
+const storyRouter = require('./story.routes');
+const userRouter = require('./user.routes');
 
 router.use('/artists', artistRouter);
 router.use('/auth', authRouter);
+router.use('/releases', releaseRouter);
+router.use('/stories', storyRouter);
 router.use('/users', userRouter);
 
 module.exports = router;

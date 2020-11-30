@@ -1,7 +1,5 @@
 import {Request, Response} from 'express';
 import {Artist, ArtistDocument} from "../models/artist.model";
-import {UserDocument} from "../models/user.model";
-
 
 //GET
 

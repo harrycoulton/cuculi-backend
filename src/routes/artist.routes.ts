@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 //Controllers
-import * as artistController from '../../controllers/artistController';
+import * as artistController from '../controllers/artist.controller';
 
 // Auth
-import * as auth from '../../middleware/authenticateRequest';
+import * as auth from '../middleware/authenticateRequest';
 
 // Public
 

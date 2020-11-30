@@ -4,13 +4,14 @@ const express = require('express');
 const router = express.Router();
 
 //Controllers
-import * as authController from '../../controllers/authController';
+import * as authController from '../controllers/auth.controller';
 
 // Middleware
-import * as auth from '../../middleware/authenticateRequest';
+import * as auth from '../middleware/authenticateRequest';
 
 
 router.post('/login', authController.login);
 router.post('/logout', auth.authenticateRequest, authController.logout);
+router.post('/forgot-password');
 
 module.exports = router;
