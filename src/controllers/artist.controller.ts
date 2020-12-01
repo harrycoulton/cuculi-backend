@@ -52,7 +52,6 @@ export const create = async (req: Request, res: Response) => {
 
 export const update = async (req: Request, res: Response) => {
     const updates = Object.keys(req.body.artistUpdate);
-    console.log(updates);
     const disallowedUpdates = ['id', '_id'];
     const isValidUpdate = updates.every((update) => !disallowedUpdates.includes(update));
     if (!isValidUpdate){

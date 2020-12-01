@@ -18,7 +18,7 @@ app.use(router);
 
 const db = require( './database/mongoose');
 
-// Mailing
+// Mail
 
 export const transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
