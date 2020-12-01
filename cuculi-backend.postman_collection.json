@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "5f51c103-2187-41da-80ed-a4ff8643a477",
+		"name": "cuculi-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[GET] Get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY4NTE0LCJleHAiOjE2MDY4NTQ5MTR9.V5HgZtMuGmmG3O_ZWeHtw7lPUOcE1sgNUDmQepMKQcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/users/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test\",\n    \"email\": \"test@email.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/users/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@email.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all undeleted artists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artists/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all artists",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artists/all-admin",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"all-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get artist by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artists/get/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"get",
+						"5fba8a737d70b3105354417a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Create Artist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2MDU5OTY5LCJleHAiOjE2MDYxNDYzNjl9.M4_gL5ZT-hT1R9YIEMV4WGvWr7exuM6D3KZJ1dePIjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"artist\": {\n        \"name\": \"test2\",\n        \"bio\": \"Artist bio in this bit\",\n        \"imgSrc\": \"imgur.com\",\n        \"forFansOf\": [\"Metallica\", \"Opera\", \"DJ Lord of the Rings\"],\n        \"route\": \"testartist\",\n        \"isFeatured\": false,\n        \"links\": [\n            {\n            \"icon\": \"facebook\",\n            \"iconId\": 3,\n            \"href\": \"facebook.com\"\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/artists/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Update artist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2MDU5OTY5LCJleHAiOjE2MDYxNDYzNjl9.M4_gL5ZT-hT1R9YIEMV4WGvWr7exuM6D3KZJ1dePIjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"artistUpdate\": {\n        \"name\": \"successful\",\n        \"bio\": \"This bio has been updated\",\n        \"deleted\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/artists/update/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"update",
+						"5fba8a737d70b3105354417a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DELETE] Delete Artist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2MDU5OTY5LCJleHAiOjE2MDYxNDYzNjl9.M4_gL5ZT-hT1R9YIEMV4WGvWr7exuM6D3KZJ1dePIjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artists/delete/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"delete",
+						"5fba8a737d70b3105354417a"
+					]
+				},
+				"description": "Doesn't actually delete the artist. Just marks them as deleted in db."
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Undelete Artist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artists/undelete/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"undelete",
+						"5fba8a737d70b3105354417a"
+					]
+				},
+				"description": "Doesn't actually delete the artist. Just marks them as deleted in db."
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all undeleted releases",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/releases/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all releases",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/releases/all-admin",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"all-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get Release by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/releases/get/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"get",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Create Release",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"release\": {\n    \"artist\": \"5fba8a737d70b3105354417a\",\n    \"title\": \"Successful release\",\n    \"year\": \"2020-11-30T08:44:29+0100\",\n    \"imgSrc\": \"assets/images/tunnel.jpg\",\n    \"info\": \"<p>Tunnel is the debut EP from emerging folk artist Anonymous They. The distinctive, rich voice of</p>\",\n    \"route\": \"SuccessfulRecord\",\n    \"price\": 10.50,\n    \"links\": [\n        {\n            \"icon\": \"bandcamp\",\n            \"iconId\": 4,\n            \"href\": \"https://anonymousthey.bandcamp.com/\"\n        }\n    ],\n    \"relatedArtists\": [\"5fba8a737d70b3105354417a\", \"5fba8a737d70b3105354417a\"]\n}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/releases/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Update Release",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"releaseUpdate\": {\n        \"title\": \"Updated\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/releases/update/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"update",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DELETE] Delete Release",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/releases/delete/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"delete",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Undelete Release",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/releases/undelete/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"undelete",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all undeleted Stories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/stories/all",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get all Stories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/stories/all-admin",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"all-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get Story by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/stories/get/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"get",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Create Story",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"story\": {\n        \"heading\": \"'Moonbloom' out now!\",\n        \"quote\": \"hahaha\",\n        \"text\": \"text\",\n        \"imgSrc\": \"assets/images/moonbloom.jpeg\",\n        \"imgDesc\": \"Still from Moonbloom video\",\n        \"isFeatured\": true,\n        \"route\": \"moonbloom\",\n        \"relatedStories\": [],\n        \"relatedArtists\": [5],\n        \"relatedReleases\": []\n}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/stories/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Update Story",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"storyUpdate\": {\n        \"heading\": \"hahahahahahahahaha\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/stories/update/5fc5665c798a0c698503b78f",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"update",
+						"5fc5665c798a0c698503b78f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DELETE] Delete Story",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/stories/delete/5fc5665c798a0c698503b78f",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"delete",
+						"5fc5665c798a0c698503b78f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Undelete Story",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2NzY5MzkyLCJleHAiOjE2MDY4NTU3OTJ9.Vs2zHcvvIJ_E_qd6z9xmDZGJA-_HgElg0L_M6lhwlUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/stories/undelete/5fc5665c798a0c698503b78f",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"undelete",
+						"5fc5665c798a0c698503b78f"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
