@@ -22,10 +22,10 @@ const db = require( './database/mongoose');
 
 export const transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
-    port: 2525,
+    port: process.env.MAILTRAP_PORT,
     auth: {
-        user: "5302388709c123",
-        pass: "e727ff3f9e60d8"
+        user: process.env.MAILTRAP_USER,
+        pass: process.env.MAILTRAP_PASS
     }
 });
 
