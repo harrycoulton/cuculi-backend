@@ -12,3 +12,4 @@ Use cuculi-backend.postman_collection.json for mock API requests
 
 - User roles
 - Events
+- Forgot password email templates

@@ -62,7 +62,12 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
             from: 'noreply@cuculirecords.com', // Sender address
             to: req.body.email,         // List of recipients
             subject: 'Password Reset Link', // Subject line
-            html: 'Forgot your password? <a href="hebish.123/reset-password/'+user.passwordResetToken+'">Click this link</a>' // Plain text body
+            html: '<div style="font-family: Arial">' +
+                '   <p style="margin-bottom: 20px">Hello' + user.name + '</p>' +
+                '   <p>A password reset link has been requested for this account. Please go to' +
+                '   <a href="cuculirecords.com/password-reset/'+ user.passwordResetToken +'"> this link</a> to reset your password</p>' +
+                '   <p style="font-style: italic">This link will be valid for 2 hours</p>'+
+                '</div>'
         };
         transport.sendMail(message, function(err, info) {
             if (err) {
@@ -80,7 +85,7 @@ export const passwordReset = async (req: Request, res: Response, next: NextFunct
             return next(err);
         }
         if (!user){
-            return res.status(400).send({Error: "User not found"});
+            return res.status(400).send({Error: "Link invalid"});
         }
         if (req.body.password !== req.body.passwordConfirmation){
             return res.status(500).send({Error: "Passwords do not match"});
