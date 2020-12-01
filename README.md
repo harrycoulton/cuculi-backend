@@ -8,8 +8,7 @@ Run npm:start dev for dev environment (port 5000)
 
 Use cuculi-backend.postman_collection.json for mock API requests
 
-#Todo
+# Todo
 
-- Forgot password
 - User roles
 - Events
