@@ -9,6 +9,6 @@ import * as auth from '../middleware/authenticateRequest';
 
 router.get('/all', auth.authenticateRequest, userController.getAllUsers);
 router.get('/:id', userController.getUserById);
-router.post('/create', userController.createUser);
+router.post('/create', auth.authenticateRequest, userController.createUser);
 
 module.exports = router;

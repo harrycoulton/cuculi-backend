@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
 
 }, {timestamps: true});
 
-type generateAuthTokenFunction = (id: String, email: String) => string;
+type generateAuthTokenFunction = (id: String, email: String, expiry: String) => string;
 
 export interface AuthToken {
     accessToken: string;
@@ -73,8 +73,8 @@ userSchema.pre("save", function save(next){
     });
 });
 
-const generateAuthToken: generateAuthTokenFunction = function (id: String, email: String) {
-    return jwt.sign( { _id: id, email: email }, process.env.APP_KEY, { expiresIn: '24h'} );
+const generateAuthToken: generateAuthTokenFunction = function (id: String, email: String, expiry: String) {
+    return jwt.sign( { _id: id, email: email }, process.env.APP_KEY, { expiresIn: expiry} );
 }
 
 userSchema.methods.generateAuthToken = generateAuthToken;
