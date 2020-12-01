@@ -86,7 +86,6 @@ export const passwordReset = async (req: Request, res: Response, next: NextFunct
             return res.status(500).send({Error: "Passwords do not match"});
         }
         user.password = req.body.password;
-        console.log(user);
         await user.save();
         return res.send({Success: 'Password successfully updated'});
     });
