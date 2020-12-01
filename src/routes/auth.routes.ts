@@ -9,9 +9,9 @@ import * as authController from '../controllers/auth.controller';
 // Middleware
 import * as auth from '../middleware/authenticateRequest';
 
-
 router.post('/login', authController.login);
 router.post('/logout', auth.authenticateRequest, authController.logout);
-router.post('/forgot-password');
+router.post('/forgot-password', authController.forgotPassword);
+router.post('/password-reset', authController.passwordReset);
 
 module.exports = router;
