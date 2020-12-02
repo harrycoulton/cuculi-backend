@@ -11,6 +11,7 @@ export type StoryDocument = mongoose.Document & {
     relatedStories: string[];
     relatedArtists: string[];
     relatedReleases: string[];
+    img: Buffer;
     deleted: boolean;
 };
 
@@ -52,11 +53,23 @@ const storySchema = new mongoose.Schema({
     relatedReleases: {
         type: Array
     },
+    img: {
+        type: Buffer
+    },
     deleted: {
         type: Boolean,
         default: false
     }
 
 }, {timestamps: true});
+
+storySchema.methods.toJSON = function (){
+    const story = this as StoryDocument;
+    const storyObject = story.toObject();
+
+    delete storyObject.img;
+
+    return storyObject;
+}
 
 export const Story = mongoose.model<StoryDocument>("Story", storySchema);

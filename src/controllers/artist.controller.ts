@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import {Artist, ArtistDocument} from "../models/artist.model";
+const sharp = require('sharp');
 
 //GET
 
@@ -88,5 +89,25 @@ export const markUnDeleted = async (req: Request, res: Response) => {
         await artist.save();
         res.send({Success: 'Artist succesfully undeleted'});
     });
+}
+
+export const serveImage = async (req: Request, res: Response) => {
+    const artist = await Artist.findById(req.params.id, async (err, artist: ArtistDocument) => {
+        if (!artist || !artist.img){
+            res.status(500).send({Error: 'User and/or image not found'});
+        }
+        res.set('Content-type', 'image/png');
+        res.send(artist.img);
+    })
+}
+
+export const uploadImage = async (req: Request, res: Response) => {
+    const buffer = req.file.buffer;
+    const artist = Artist.findById(req.params.id,  async (err, artist: ArtistDocument) => {
+        if (err) return res.status(500).send({Error: 'Image upload failed'});
+        artist.img = buffer;
+        await artist.save();
+        res.send({Success: 'Image successfully uploaded'});
+    })
 }
 
