@@ -90,3 +90,25 @@ export const markUnDeleted = async (req: Request, res: Response) => {
     });
 }
 
+// Img
+
+export const serveImage = async (req: Request, res: Response) => {
+    const story = await Story.findById(req.params.id, async (err, story: StoryDocument) => {
+        if (!story || !story.img){
+            res.status(500).send({Error: 'User and/or image not found'});
+        }
+        res.set('Content-type', 'image/png');
+        res.send(story.img);
+    })
+}
+
+export const uploadImage = async (req: Request, res: Response) => {
+    const buffer = req.file.buffer;
+    const story = Story.findById(req.params.id,  async (err, story: StoryDocument) => {
+        if (err) return res.status(500).send({Error: 'Image upload failed'});
+        story.img = buffer;
+        await story.save();
+        res.send({Success: 'Image successfully uploaded'});
+    })
+}
+

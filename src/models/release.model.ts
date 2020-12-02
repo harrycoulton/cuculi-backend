@@ -13,6 +13,7 @@ export type ReleaseDocument = mongoose.Document & {
         iconId: number;
         href: string;
     }>;
+    img: Buffer;
     relatedArtists: number[];
     deleted: boolean;
 };
@@ -51,11 +52,23 @@ const releaseSchema = new mongoose.Schema({
     relatedArtists: {
        type: Array
     },
+    img: {
+        type: Buffer
+    },
     deleted: {
         type: Boolean,
         default: false
     }
 
 }, {timestamps: true});
+
+releaseSchema.methods.toJSON = function() {
+    const release = this as ReleaseDocument;
+    const releaseObject = release.toObject();
+
+    delete releaseObject.img;
+
+    return releaseObject;
+}
 
 export const Release = mongoose.model<ReleaseDocument>("Release", releaseSchema);

@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
 import {Release, ReleaseDocument} from "../models/release.model";
+import {release} from "os";
+const sharp = require('sharp');
 
 //GET
 
@@ -88,5 +90,27 @@ export const markUnDeleted = async (req: Request, res: Response) => {
         await release.save();
         res.send({Success: 'Release succesfully undeleted'});
     });
+}
+
+// Img
+
+export const serveImage = async (req: Request, res: Response) => {
+    const release = await Release.findById(req.params.id, async (err, release: ReleaseDocument) => {
+        if (!release || !release.img){
+            res.status(500).send({Error: 'User and/or image not found'});
+        }
+        res.set('Content-type', 'image/png');
+        res.send(release.img);
+    })
+}
+
+export const uploadImage = async (req: Request, res: Response) => {
+    const buffer = req.file.buffer;
+    const release = Release.findById(req.params.id,  async (err, release: ReleaseDocument) => {
+        if (err) return res.status(500).send({Error: 'Image upload failed'});
+        release.img = buffer;
+        await release.save();
+        res.send({Success: 'Image successfully uploaded'});
+    })
 }
 

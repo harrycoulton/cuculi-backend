@@ -84,7 +84,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test@email.com\",\n    \"password\": \"test\"\n}",
+					"raw": "{\n    \"email\": \"test@email.com\",\n    \"password\": \"newpassword\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,6 +100,62 @@
 					"path": [
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/auth/forgot-password",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2ODQ2NDA0LCJleHAiOjE2MDY4NTM2MDR9.x7ITH9ZKuLNVivg0Dq13lcqSaK_pxQIyf8KspTBQqpU\",\n    \"password\": \"newpassword\",\n    \"passwordConfirmation\": \"newpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/auth/password-reset",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"password-reset"
 					]
 				}
 			},
@@ -296,6 +352,10 @@
 				},
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost:5000/artists/undelete/5fba8a737d70b3105354417a",
 					"host": [
@@ -309,6 +369,46 @@
 					]
 				},
 				"description": "Doesn't actually delete the artist. Just marks them as deleted in db."
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Upload Artist Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2OTM2MjE0LCJleHAiOjE2MDcwMjI2MTR9.5XhY38ouEkfuoA3SVsrPeBnEb29LG01Hq3c9PCwvh_w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload",
+							"type": "file",
+							"src": "/Users/harrycoulton/Downloads/node-course-images/profile-pic.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/artists/upload/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"upload",
+						"5fba8a737d70b3105354417a"
+					]
+				}
 			},
 			"response": []
 		},
@@ -528,6 +628,46 @@
 			"response": []
 		},
 		{
+			"name": "[POST] Upload Release Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2OTM2MjE0LCJleHAiOjE2MDcwMjI2MTR9.5XhY38ouEkfuoA3SVsrPeBnEb29LG01Hq3c9PCwvh_w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload",
+							"type": "file",
+							"src": "/Users/harrycoulton/Downloads/node-course-images/philly.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/releases/upload/5fc55d6397d475683bf7458d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"releases",
+						"upload",
+						"5fc55d6397d475683bf7458d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "[GET] Get all undeleted Stories",
 			"request": {
 				"auth": {
@@ -737,6 +877,86 @@
 						"stories",
 						"undelete",
 						"5fc5665c798a0c698503b78f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Upload Story Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2OTM2MjE0LCJleHAiOjE2MDcwMjI2MTR9.5XhY38ouEkfuoA3SVsrPeBnEb29LG01Hq3c9PCwvh_w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload",
+							"type": "file",
+							"src": "/Users/harrycoulton/Downloads/node-course-images/profile-pic.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/stories/upload/5fc5665c798a0c698503b78f",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"stories",
+						"upload",
+						"5fc5665c798a0c698503b78f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] Upload Event Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5MWE5ZDlmMGU1NzEyNjFiNGFmYTgiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjA2OTM2MjE0LCJleHAiOjE2MDcwMjI2MTR9.5XhY38ouEkfuoA3SVsrPeBnEb29LG01Hq3c9PCwvh_w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload",
+							"type": "file",
+							"src": "/Users/harrycoulton/Downloads/node-course-images/profile-pic.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/artists/upload/5fba8a737d70b3105354417a",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artists",
+						"upload",
+						"5fba8a737d70b3105354417a"
 					]
 				}
 			},

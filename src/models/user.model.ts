@@ -73,6 +73,20 @@ userSchema.pre("save", function save(next){
     });
 });
 
+userSchema.methods.toJSON = function () {
+    const user = this as UserDocument;
+    const userObject = user.toObject();
+
+    delete userObject.password;
+    delete userObject.tokens;
+    delete userObject.passwordResetToken;
+    delete userObject.passwordResetExpires;
+
+    console.log(userObject);
+
+    return userObject;
+}
+
 const generateAuthToken: generateAuthTokenFunction = function (id: String, email: String, expiry: String) {
     return jwt.sign( { _id: id, email: email }, process.env.APP_KEY, { expiresIn: expiry} );
 }
